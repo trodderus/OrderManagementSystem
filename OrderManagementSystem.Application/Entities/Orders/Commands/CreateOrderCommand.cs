@@ -1,10 +1,6 @@
 ﻿using MediatR;
 using OrderManagementSystem.Application.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using OrderManagementSystem.Domain.Entities;
 
 namespace OrderManagementSystem.Application.Entities.Orders.Commands
 {

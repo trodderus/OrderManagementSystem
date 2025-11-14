@@ -1,11 +1,6 @@
-﻿using OrderManagementSystem.Application.Entities.Products.Commands;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OrderManagementSystem.Domain.Entities;
 
-namespace OrderManagementSystem.Application.Interfaces
+namespace OrderManagementSystem.Domain.Interfaces
 {
     public interface IProductRepository
     {
@@ -17,6 +12,6 @@ namespace OrderManagementSystem.Application.Interfaces
 
         Task UpdateAsync(Product product);
 
-        Task<IEnumerable<Product>> GetLowStockAsync(int threshold);
+        Task<List<Product>> GetLowStockAsync(int threshold);
     }
 }

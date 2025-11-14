@@ -1,11 +1,6 @@
 ﻿using MediatR;
 using OrderManagementSystem.Application.DTOs;
-using OrderManagementSystem.Application.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using OrderManagementSystem.Domain.Interfaces;
 
 namespace OrderManagementSystem.Application.Entities.Products.Queries
 {

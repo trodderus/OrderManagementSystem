@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using OrderManagementSystem.Application.DTOs;
-using OrderManagementSystem.Application.Interfaces;
+using OrderManagementSystem.Domain.Interfaces;
 
 namespace OrderManagementSystem.Application.Entities.Reports.Queries
 {

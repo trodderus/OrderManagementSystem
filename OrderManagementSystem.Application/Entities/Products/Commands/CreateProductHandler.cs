@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using OrderManagementSystem.Application.DTOs;
-using OrderManagementSystem.Application.Interfaces;
+using OrderManagementSystem.Domain.Entities;
+using OrderManagementSystem.Domain.Interfaces;
 
 namespace OrderManagementSystem.Application.Entities.Products.Commands
 {

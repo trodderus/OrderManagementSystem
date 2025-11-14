@@ -1,4 +1,4 @@
-﻿namespace OrderManagementSystem.Application.Entities.Orders.Commands
+﻿namespace OrderManagementSystem.Domain.Entities
 {
     public class OrderItem
     {
