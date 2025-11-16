@@ -17,13 +17,20 @@ namespace OrderManagementSystem.Presentation.Middleware
             {
                 _logger.LogError(ex, ex.Message);
 
-                context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+                var statusCode = ex switch
+                {
+                    InvalidOperationException => StatusCodes.Status400BadRequest,
+                    KeyNotFoundException => StatusCodes.Status404NotFound,
+                    _ => StatusCodes.Status500InternalServerError
+                };
+
+                context.Response.StatusCode = statusCode;
                 context.Response.ContentType = "application/problem+json";
 
                 var problem = new ProblemDetails
                 {
-                    Status = 500,
-                    Title = "An unhandled exception occurred.",
+                    Status = statusCode,
+                    Title = statusCode == 500 ? "An unhandled exception occurred." : ex.GetType().Name,
                     Detail = ex.Message
                 };
 

@@ -29,11 +29,7 @@ namespace OrderManagementSystem.Presentation.Tests.Controllers
             var orderReq = new CreateOrderCommand(
                 new()
                 {
-                    new()
-                    {
-                        ProductId = productId, 
-                        Quantity = 2 
-                    },
+                    new(productId, 2),
                 });
 
             var orderResponse = await _client.PostAsJsonAsync("/api/orders", orderReq);
@@ -54,11 +50,7 @@ namespace OrderManagementSystem.Presentation.Tests.Controllers
             var request = new CreateOrderCommand(
                 new()
                 {
-                    new()
-                    {
-                        ProductId = -1,
-                        Quantity = -2,
-                    },
+                    new(-1, -2),
                 });
 
             var response = await _client.PostAsJsonAsync("/api/orders", request);

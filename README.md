@@ -61,7 +61,9 @@ cd OrderManagementSystem
 dotnet run
 ```
 
-You can then access the SwaggerUI on https://localhost:7285/swagger/index.html
+You can then access the API by importing the Postman Collection: `OrderManagementSystem API.postman_collection.json`
+
+Alternatively, you can run through Visual Studio and access the SwaggerUI on https://localhost:7285/swagger/index.html
 
 ---
 

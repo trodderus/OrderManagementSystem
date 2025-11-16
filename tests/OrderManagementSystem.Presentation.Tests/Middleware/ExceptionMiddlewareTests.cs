@@ -10,13 +10,9 @@ using System.Net.Http.Json;
 
 namespace OrderManagementSystem.Presentation.Tests.Middleware
 {
-    public class ExceptionMiddlewareTests: IClassFixture<TestWebApplicationFactory>
+    public class ExceptionMiddlewareTests(TestWebApplicationFactory factory) : IClassFixture<TestWebApplicationFactory>
     {
-        private readonly HttpClient _client;
-
-        public ExceptionMiddlewareTests(TestWebApplicationFactory factory)
-        {
-            _client = factory.WithWebHostBuilder(builder =>
+        private readonly HttpClient _client = factory.WithWebHostBuilder(builder =>
             {
                 builder.Configure(app =>
                 {
@@ -32,21 +28,20 @@ namespace OrderManagementSystem.Presentation.Tests.Middleware
                     });
                 });
             }).CreateClient();
-        }
 
         [Fact]
         public async Task ExceptionMiddleware_Should_Return_ProblemDetails()
         {
             var response = await _client.GetAsync("/throw");
 
-            response.StatusCode.ShouldBe(HttpStatusCode.InternalServerError);
+            response.StatusCode.ShouldBe(HttpStatusCode.BadRequest);
 
             var problem = await response.Content.ReadFromJsonAsync<ProblemDetails>();
 
             problem.ShouldNotBeNull();
-            problem!.Title.ShouldBe("An unhandled exception occurred.");
+            problem!.Title.ShouldBe("InvalidOperationException");
             problem.Detail.ShouldBe("Boom!");
-            problem.Status.ShouldBe(500);
+            problem.Status.ShouldBe(400);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Moq;
+using OrderManagementSystem.Application.DTOs;
 using OrderManagementSystem.Application.Entities.Orders.Commands;
 using OrderManagementSystem.Domain.Entities;
 using OrderManagementSystem.Domain.Interfaces;
@@ -25,7 +26,7 @@ namespace OrderManagementSystem.Application.Tests.Entities.Orders.Commands
 
             var handler = new CreateOrderHandler(productRepoMock.Object, Mock.Of<IOrderRepository>());
 
-            var command = new CreateOrderCommand(new() { new() { ProductId = 1, Quantity = 2 } });
+            var command = new CreateOrderCommand(new() { new(1, 2) });
 
             // Act
             var result = await handler.Handle(command, CancellationToken.None);
@@ -45,7 +46,7 @@ namespace OrderManagementSystem.Application.Tests.Entities.Orders.Commands
 
             var handler = new CreateOrderHandler(productRepoMock.Object, Mock.Of<IOrderRepository>());
 
-            var command = new CreateOrderCommand(new() { new() { ProductId = 1, Quantity = 2 } });
+            var command = new CreateOrderCommand(new() { new(1, 2) });
 
             // Act & Assert
             await Assert.ThrowsAsync<InvalidOperationException>(() => handler.Handle(command, CancellationToken.None));
