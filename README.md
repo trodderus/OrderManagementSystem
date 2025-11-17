@@ -41,15 +41,15 @@ dotnet restore
 1. **Add Initial Migration**
 ```bash
 dotnet ef migrations add InitialCreate \
-  -p OrderManagementSystem.Infrastructure/OrderManagementSystem.Infrastructure.csproj \
-  --startup-project OrderManagementSystem.Presentation/OrderManagementSystem.Presentation.csproj
+  -p src/OrderManagementSystem.Infrastructure/OrderManagementSystem.Infrastructure.csproj \
+  --startup-project src/OrderManagementSystem.Presentation/OrderManagementSystem.Presentation.csproj
 ```
 
 2. **Apply Migration / Create Database**
 ```bash
 dotnet ef database update \
-  -p OrderManagementSystem.Infrastructure/OrderManagementSystem.Infrastructure.csproj \
-  -s OrderManagementSystem.Presentation/OrderManagementSystem.Presentation.csproj
+  -p src/OrderManagementSystem.Infrastructure/OrderManagementSystem.Infrastructure.csproj \
+  -s src/OrderManagementSystem.Presentation/OrderManagementSystem.Presentation.csproj
 ```
 
 ---
@@ -57,7 +57,7 @@ dotnet ef database update \
 ## Run the API
 
 ```bash
-cd OrderManagementSystem
+cd src/OrderManagementSystem.Presentation
 dotnet run
 ```
 
